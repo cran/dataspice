@@ -1,19 +1,39 @@
-#' write_spice
+#' Write spice
+#'
+#' Write out your metadata as a dataspice JSON-LD document
 #'
 #' @param path location of metadata files
 #' @param ... additional arguments to [jsonlite::toJSON()]
 #'
-#' @return a json-ld file at the path specified
+#' @return A JSON-LD file at the path specified
 #' @export
 #' @importFrom readr read_csv
 #' @importFrom purrr pmap
 #' @importFrom dplyr rename
+#' @examples
+#' \dontrun{
+#' # First create your metadata templates
+#' create_spice()
+#'
+#' # Then fill in the template files however you like
+#'
+#' # Then write out your dataspice file
+#' write_spice()
+#' }
 write_spice <- function(path = "data/metadata", ...) {
 
-  biblio <- readr::read_csv(file.path(path, "biblio.csv"), col_types = readr::cols())
-  attributes <- readr::read_csv(file.path(path, "attributes.csv"), col_types = readr::cols())
-  access <- readr::read_csv(file.path(path, "access.csv"), col_types = readr::cols())
-  creators <- readr::read_csv(file.path(path, "creators.csv"), col_types = readr::cols())
+  biblio <- readr::read_csv(
+    file.path(path, "biblio.csv"),
+    col_types = readr::cols())
+  attributes <- readr::read_csv(
+    file.path(path, "attributes.csv"),
+    col_types = readr::cols())
+  access <- readr::read_csv(
+    file.path(path, "access.csv"),
+    col_types = readr::cols())
+  creators <- readr::read_csv(
+    file.path(path, "creators.csv"),
+    col_types = readr::cols())
 
   # Validate the CSVs
   validate_biblio(biblio)
@@ -25,7 +45,7 @@ write_spice <- function(path = "data/metadata", ...) {
   access <- access[ !names(access)=="fileName" ]
 
   distribution <- purrr::pmap(access,
-    function(name = NULL, contentUrl = NULL, encodingFormat = NULL){
+    function(name = NULL, contentUrl = NULL, encodingFormat = NULL) {
     list(type = "DataDownload",
          name = name,
          contentUrl = contentUrl,
@@ -76,4 +96,3 @@ write_spice <- function(path = "data/metadata", ...) {
 
 
 }
-

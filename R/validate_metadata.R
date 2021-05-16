@@ -7,7 +7,6 @@ validate_biblio <- function(biblio) {
   stopifnot(is.data.frame(biblio))
 
   if (nrow(biblio) <= 0) {
-    print(biblio)
     stop(call. = FALSE,
          "biblio.csv must have at least one row of data")
   }
@@ -44,7 +43,8 @@ validate_access <- function(access) {
 
 #' Validate creators.csv
 #'
-#' @param creators (data.frame) A \code{data.frame} read in from \code{creators.csv}
+#' @param creators (data.frame) A \code{data.frame} read in from
+#'  \code{creators.csv}
 #'
 #' @return Nothing. Side-effect: Can \code{stop} execution if validation fails.
 validate_creators <- function(creators) {

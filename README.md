@@ -1,10 +1,18 @@
+---
+output:
+  md_document:
+    variant: gfm
+---
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-dataspice
-=========
+# dataspice
 
-[![Build
-Status](https://travis-ci.com/ropenscilabs/dataspice.svg?branch=master)](https://travis-ci.com/ropenscilabs/dataspice)
+![CRAN Version](https://www.r-pkg.org/badges/version/dataspice)
+![CI](https://github.com/ropensci/dataspice/workflows/R-CMD-check/badge.svg)
+[![Codecov test
+coverage](https://codecov.io/gh/ropensci/dataspice/branch/main/graph/badge.svg)](https://codecov.io/gh/ropensci/dataspice?branch=main)
+[![](https://badges.ropensci.org/426_status.svg)](https://github.com/ropensci/software-review/issues/426)
 
 The goal of `dataspice` is to make it easier for researchers to create
 basic, lightweight, and concise metadata files for their datasets by
@@ -21,32 +29,35 @@ then be used to:
 
 Metadata fields are based on
 [Schema.org/Dataset](https://schema.org/Dataset) and other [metadata
-standards](https://github.com/ropenscilabs/dataspice#resources) and
-represent a lowest common denominator which means converting between
-formats should be relatively straightforward.
+standards](#resources) and represent a lowest common denominator which
+means converting between formats should be relatively straightforward.
 
-Example
--------
+## Example
 
-A fully worked example can be found
-[here](https://github.com/amoeba/dataspice-example) and a live preview
-of the output [here](https://amoeba.github.io/dataspice-example/). An
-example of how Google sees this can be found
-[here](https://search.google.com/structured-data/testing-tool/u/0/#url=https%3A%2F%2Famoeba.github.io%2Fdataspice-example%2F).
+An basic example repository for demonstrating what using `dataspice`
+might look like can be found at
+[https://github.com/amoeba/dataspice-example](https://github.com/amoeba/dataspice-example/).
+From there, you can also check out a preview of the HTML `dataspice`
+generates at
+[https://amoeba.github.io/dataspice-example](https://amoeba.github.io/dataspice-example/)
+and how Google sees it at
+<https://search.google.com/test/rich-results?url=https%3A%2F%2Famoeba.github.io%2Fdataspice-example%2F>.
 
-Installation
-------------
+A much more detailed example has been created by [Anna
+Krystalli](https://annakrystalli.me) at
+<https://annakrystalli.me/dataspice-tutorial/> ([GitHub
+repo](https://github.com/annakrystalli/dataspice-tutorial)).
 
-You can install the development version from
-[GitHub](https://github.com/) with:
+## Installation
+
+You can install the latest version from
+[CRAN](https://cran.r-project.org):
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("ropenscilabs/dataspice")
+install.packages("dataspice")
 ```
 
-Workflow
---------
+## Workflow
 
 ``` r
 create_spice()
@@ -55,7 +66,8 @@ write_spice()
 build_site() # Optional
 ```
 
-![worfklowdiagram](man/figures/dataspice_workflow.png)
+![diagram showing a workflow for using
+dataspice](man/figures/dataspice_workflow.png)
 
 ### Create spice
 
@@ -93,8 +105,9 @@ that ship with the package:
 
 ``` r
 data_files <- list.files(system.file("example-dataset/", package = "dataspice"),
-                         pattern = ".csv",
-                         full.names = TRUE)
+  pattern = ".csv",
+  full.names = TRUE
+)
 ```
 
 This function assumes that the metadata templates are in a folder called
@@ -110,7 +123,8 @@ to populate the header names
 ``` r
 data_files %>%
   purrr::map(~ prep_attributes(.x, attributes_path),
-             attributes_path = attributes_path)
+    attributes_path = attributes_path
+  )
 ```
 
 The output of `prep_attributes()` has the first two columns filled out:
@@ -226,14 +240,14 @@ Each of the metadata templates can be edited interactively using a
 [Shiny](https://shiny.rstudio.com/) app:
 
 -   `edit_attributes()` opens a Shiny app that can be used to edit
-    `attributes.csv`. The shiny app displays the current `attributes`
+    `attributes.csv`. The Shiny app displays the current `attributes`
     table and lets the user fill in an informative description and units
     (e.g. meters, hectares, etc.) for each variable.
 -   `edit_access()` opens an editable version of `access.csv`
 -   `edit_creators()` opens an editable version of `creators.csv`
 -   `edit_biblio()` opens an editable version of `biblio.csv`
 
-![edit\_attributes shiny app](man/figures/edit_attributes.png)
+![edit\_attributes Shiny app](man/figures/edit_attributes.png)
 
 Remember to click on **Save** when finished editing.
 
@@ -293,8 +307,8 @@ file](man/figures/listviewer.png)
 -   `build_site()` creates a bare-bones `index.html` file in the
     repository `docs` folder with a simple view of the dataset with the
     metadata and an interactive map. For example, this
-    [repository](https://github.com/amoeba/dataspice-example) results in
-    this [website](https://amoeba.github.io/dataspice-example/)
+    [repository](https://github.com/amoeba/dataspice-example/) results
+    in this [website](https://amoeba.github.io/dataspice-example/)
 
 ![dataspice-website](man/figures/website_example.png)
 
@@ -313,14 +327,15 @@ library(dataspice)
 # Load an example dataspice JSON that comes installed with the package
 spice <- system.file(
   "examples", "annual-escapement.json",
-  package = "dataspice")
+  package = "dataspice"
+)
 
 # Convert it to EML
 eml_doc <- spice_to_eml(spice)
 #> Warning: variableMeasured not crosswalked to EML because we don't have enough
 #> information. Use `crosswalk_variables` to create the start of an EML attributes
 #> table. See ?crosswalk_variables for help.
-#> You might want to run EML::eml_validate on the result at this point and fix what validations errors are produced.You will commonly need to set `packageId`, `system`, and provide `attributeList` elements for each `dataTable`.
+#> You might want to run EML::eml_validate on the result at this point and fix what validations errors are produced. You will commonly need to set `packageId`, `system`, and provide `attributeList` elements for each `dataTable`.
 ```
 
 You may receive warnings depending on which `dataspice` fields you
@@ -329,6 +344,11 @@ record which is totally fine:
 
 ``` r
 library(EML)
+#> 
+#> Attaching package: 'EML'
+#> The following object is masked from 'package:magrittr':
+#> 
+#>     set_attributes
 
 eml_validate(eml_doc)
 #> [1] FALSE
@@ -374,8 +394,7 @@ eml <- read_eml(eml_path)
 my_spice <- eml_to_spice(eml, "data/metadata")
 ```
 
-Resources
----------
+## Resources
 
 A few existing tools & data standards to help users in specific domains:
 
@@ -394,8 +413,13 @@ A few existing tools & data standards to help users in specific domains:
 [RDA metadata
 directory](http://rd-alliance.github.io/metadata-directory/standards/).
 
-Contributors
-------------
+## Code of Conduct
+
+Please note that this package is released with a [Contributor Code of
+Conduct](https://ropensci.org/code-of-conduct/). By contributing to this
+project, you agree to abide by its terms.
+
+## Contributors
 
 This package was developed at rOpenSci’s 2018 unconf by (in alphabetical
 order):

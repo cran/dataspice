@@ -1,5 +1,5 @@
 Package: dataspice
-Version: 1.0.0
+Version: 1.1.0
 Title: Create Lightweight Schema.org Descriptions of Data
 Description: The goal of 'dataspice' is to make it easier for researchers to
   create basic, lightweight, and concise metadata files for their datasets.
@@ -19,10 +19,10 @@ Authors@R: c(
     person("Kara", "Woo", role = c("aut"), comment = "https://github.com/karawoo"),
     person("Irene", "Steves", role = c("ctb"), comment = "https://github.com/isteves"))
 License: MIT + file LICENSE
-URL: https://github.com/ropenscilabs/dataspice
-BugReports: https://github.com/ropenscilabs/dataspice/issues
+URL: https://github.com/ropensci/dataspice
+BugReports: https://github.com/ropensci/dataspice/issues
 Encoding: UTF-8
-LazyData: true
+Language: en-US
 ByteCompile: true
 RoxygenNote: 7.1.1
 Imports: purrr, EML, fs, jsonlite, whisker, readr, stringr, tools,
@@ -31,7 +31,7 @@ Suggests: testthat, kableExtra, knitr, rmarkdown, servr, listviewer,
         maps
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2020-10-27 01:36:10 UTC; bryce
+Packaged: 2021-05-16 21:52:08 UTC; bryce
 Author: Carl Boettiger [aut] (https://github.com/cboettig),
   Scott Chamberlain [aut] (https://github.com/sckott),
   Auriel Fournier [aut] (https://github.com/aurielfournier),
@@ -44,4 +44,4 @@ Author: Carl Boettiger [aut] (https://github.com/cboettig),
   Irene Steves [ctb] (https://github.com/isteves)
 Maintainer: Bryce Mecum <brycemecum@gmail.com>
 Repository: CRAN
-Date/Publication: 2020-11-04 09:30:02 UTC
+Date/Publication: 2021-05-16 22:10:02 UTC
