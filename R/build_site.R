@@ -15,15 +15,16 @@
 #' json <- write_json(biblio, access, attributes, creators)
 #' build_site(json)
 #' }
-build_site <- function(path = "data/metadata/dataspice.json",
+build_site <- function(path = file.path("data", "metadata", "dataspice.json"),
                        template_path = system.file("template.html5",
                                                    package = "dataspice"),
-                       out_path = "docs/index.html") {
+                       out_path = file.path("docs", "index.html")) {
   data <- jsonld_to_mustache(path)
 
-    # Make docs dir if not present
-  if (!file.exists("docs")) {
-    dir.create("docs")
+  out_dir <- dirname(out_path)
+
+  if (!dir.exists(out_dir)) {
+    dir.create(out_dir, recursive = TRUE)
   }
 
   output <- whisker::whisker.render(

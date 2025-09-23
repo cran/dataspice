@@ -1,5 +1,5 @@
 Package: dataspice
-Version: 1.1.0
+Version: 1.1.1
 Title: Create Lightweight Schema.org Descriptions of Data
 Description: The goal of 'dataspice' is to make it easier for researchers to
   create basic, lightweight, and concise metadata files for their datasets.
@@ -31,7 +31,7 @@ Suggests: testthat, kableExtra, knitr, rmarkdown, servr, listviewer,
         maps
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2021-05-16 21:52:08 UTC; bryce
+Packaged: 2025-09-23 21:25:47 UTC; bryce
 Author: Carl Boettiger [aut] (https://github.com/cboettig),
   Scott Chamberlain [aut] (https://github.com/sckott),
   Auriel Fournier [aut] (https://github.com/aurielfournier),
@@ -44,4 +44,4 @@ Author: Carl Boettiger [aut] (https://github.com/cboettig),
   Irene Steves [ctb] (https://github.com/isteves)
 Maintainer: Bryce Mecum <brycemecum@gmail.com>
 Repository: CRAN
-Date/Publication: 2021-05-16 22:10:02 UTC
+Date/Publication: 2025-09-23 21:40:02 UTC
