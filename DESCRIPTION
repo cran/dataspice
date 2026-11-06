@@ -1,5 +1,5 @@
 Package: dataspice
-Version: 1.1.1
+Version: 1.2.1
 Title: Create Lightweight Schema.org Descriptions of Data
 Description: The goal of 'dataspice' is to make it easier for researchers to
   create basic, lightweight, and concise metadata files for their datasets.
@@ -24,14 +24,14 @@ BugReports: https://github.com/ropensci/dataspice/issues
 Encoding: UTF-8
 Language: en-US
 ByteCompile: true
-RoxygenNote: 7.1.1
 Imports: purrr, EML, fs, jsonlite, whisker, readr, stringr, tools,
         tibble, shiny, rhandsontable, dplyr, tidyr, ggplot2, magrittr
-Suggests: testthat, kableExtra, knitr, rmarkdown, servr, listviewer,
-        maps
+Suggests: base64enc, crsuggest, kableExtra, knitr, listviewer, maps,
+        rmarkdown, servr, sf, testthat
 VignetteBuilder: knitr
+Config/roxygen2/version: 8.1.0
 NeedsCompilation: no
-Packaged: 2025-09-23 21:25:47 UTC; bryce
+Packaged: 2026-11-06 21:08:17 UTC; bryce
 Author: Carl Boettiger [aut] (https://github.com/cboettig),
   Scott Chamberlain [aut] (https://github.com/sckott),
   Auriel Fournier [aut] (https://github.com/aurielfournier),
@@ -44,4 +44,4 @@ Author: Carl Boettiger [aut] (https://github.com/cboettig),
   Irene Steves [ctb] (https://github.com/isteves)
 Maintainer: Bryce Mecum <brycemecum@gmail.com>
 Repository: CRAN
-Date/Publication: 2025-09-23 21:40:02 UTC
+Date/Publication: 2026-11-06 22:00:02 UTC
